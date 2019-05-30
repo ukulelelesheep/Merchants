@@ -1,0 +1,8 @@
+main: com.gmail.sharpcastle33.Merchants
+version: 1.0
+name: Merchants
+
+commands:
+  test:
+    description: Summons villager
+    usage: /test
