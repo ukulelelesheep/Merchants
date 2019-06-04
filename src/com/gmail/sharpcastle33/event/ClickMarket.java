@@ -11,13 +11,13 @@ import com.gmail.sharpcastle33.Merchants;
 
 public class ClickMarket implements Listener {
 	
+	
 	@EventHandler
 	public void pumpkinClick(PlayerInteractEvent e) {		
 		Player p = e.getPlayer();
 		Block b = e.getClickedBlock();
-	
-		if (b.getType() == Material.PUMPKIN) {			
-			Merchants.hubManager.createMarket(p, b);			
-		}		
+			if (b != null && b.getType() == Material.PUMPKIN) {			
+				Merchants.hubManager.createMarket(p, b);			
+			}		
 	}
 }

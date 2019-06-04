@@ -1,26 +1,22 @@
 package com.gmail.sharpcastle33.markets;
 
-import java.util.List;
-
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.MerchantRecipe;
 
 import com.gmail.sharpcastle33.Merchants;
 
 public class MarketStall {
 	
 	private Location location;
-	private Entity villager;
-	private List<MerchantRecipe> recipes;
-	private MarketHub hub;
+	private MarketMerchant merchant;
+	private MarketHub hub = new MarketHub(null, null);
 	private Player owner;
 	
 	public MarketStall(Location location, Player owner, MarketHub hub) {
 		this.location = location;	
 		this.owner = owner;
 		this.hub = hub;
+		this.merchant = null;
 	}
 	
 	public Location getLocation() {
@@ -31,20 +27,12 @@ public class MarketStall {
 		this.location = l;
 	}
 	
-	public Entity getVillager() {
-		return villager;
+	public MarketMerchant getMarketMerchant() {
+		return merchant;
 	}
 	
-	public void setVillager(Entity v) {
-		this.villager = v;
-	}
-	
-	public List<MerchantRecipe> getRecipes() {
-		return recipes;
-	}
-	
-	public void setRecipes(List<MerchantRecipe> r) {
-		this.recipes = r;
+	public void setMarketMerchant(MarketMerchant mm) {
+		this.merchant = mm;
 	}
 	
 	public MarketHub getMarketHub() {

@@ -1,0 +1,42 @@
+package com.gmail.sharpcastle33.event;
+
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+
+
+public class ProfessionsInventoryClick implements Listener {
+	
+	@EventHandler
+	public void onInventoryClick(InventoryClickEvent event) {
+		Inventory inv = event.getInventory();
+		
+		if(!(inv.getTitle().equals("What profession do you need?"))) return;
+		
+		if(!(event.getWhoClicked() instanceof Player)) return;
+		
+		if(event.isShiftClick()) {
+			event.setCancelled(true);
+		}
+		
+		Player player = (Player) event.getWhoClicked();
+		ItemStack item = event.getCurrentItem();
+		if(item.getType() == Material.ITEM_FRAME) {
+			Location l = player.getLocation();
+			player.getWorld().spawnEntity(l, EntityType.VILLAGER);
+			player.sendMessage("<Villager> Hello, I can be your merchant");
+		}
+		
+		event.setCancelled(true);
+		
+		if(!(event.isShiftClick())) {
+			player.closeInventory();
+		}
+	}
+}

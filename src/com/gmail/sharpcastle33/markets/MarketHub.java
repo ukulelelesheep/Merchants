@@ -1,22 +1,23 @@
 package com.gmail.sharpcastle33.markets;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 public class MarketHub {
-	private List<MarketStall> marketStalls;
+	private ArrayList<MarketStall> marketStalls = new ArrayList<MarketStall>();
 	private Player owner;
 	private Block block;
 	private Material stallMaterial;
-	
+	private String name;
+	private static int marketNumber;
 	
 	public MarketHub(Player owner, Block block) {
 		this.owner = owner;
 		this.block = block;
-		marketStalls = null;
+		this.name = "Market " + marketNumber++;
 	}
 	
 	public Player getOwner() {
@@ -35,7 +36,7 @@ public class MarketHub {
 		this.block = block;
 	}
 	
-	public List<MarketStall> getMarketStalls() {
+	public ArrayList<MarketStall> getMarketStalls() {
 		return marketStalls;
 	}
 	
@@ -55,5 +56,14 @@ public class MarketHub {
 		this.stallMaterial = m;
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String s) {
+		this.name = s;
+	}
+
+
 	
 }

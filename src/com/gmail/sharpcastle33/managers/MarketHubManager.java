@@ -11,8 +11,8 @@ import com.gmail.sharpcastle33.markets.MarketHub;
 
 public class MarketHubManager {
 	//List of all the market hubs	
-	public ArrayList<MarketHub> markets;
-	private static HashMap<Player, MarketHub> defaultMarket;
+	public ArrayList<MarketHub> markets = new ArrayList<MarketHub>();
+	private static HashMap<Player, MarketHub> defaultMarket = new HashMap<Player, MarketHub>();
 	
 	
 	//Create markets
@@ -37,6 +37,10 @@ public class MarketHubManager {
 	
 	public MarketHub getDefaultMarket(Player p) {
 		return defaultMarket.get(p);
+	}
+	
+	public boolean hasDefaultMarket(Player p) {
+		return defaultMarket.containsKey(p);
 	}
 	
 	
