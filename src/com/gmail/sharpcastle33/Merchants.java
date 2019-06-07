@@ -8,7 +8,11 @@ import com.gmail.sharpcastle33.event.ClickEnchantingTable;
 import com.gmail.sharpcastle33.event.ClickMarket;
 import com.gmail.sharpcastle33.event.ClickStall;
 import com.gmail.sharpcastle33.event.EventsClass;
+import com.gmail.sharpcastle33.event.MarketListClick;
+import com.gmail.sharpcastle33.event.MerchantMainClick;
 import com.gmail.sharpcastle33.event.ProfessionsInventoryClick;
+import com.gmail.sharpcastle33.event.RightClickVillager;
+import com.gmail.sharpcastle33.event.TypingInName;
 import com.gmail.sharpcastle33.managers.MarketHubManager;
 
 
@@ -45,6 +49,10 @@ public class Merchants extends JavaPlugin {
 		pm.registerEvents(new ClickStall(), this);
 		pm.registerEvents(new ClickEnchantingTable(), this);
 		pm.registerEvents(new ProfessionsInventoryClick(), this);
+		pm.registerEvents(new RightClickVillager(), this);
+		pm.registerEvents(new MerchantMainClick(), this);
+		pm.registerEvents(new TypingInName(), this);
+		pm.registerEvents(new MarketListClick(), this);
 	}
 	
 	

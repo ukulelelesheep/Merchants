@@ -28,9 +28,11 @@ public class RightClickVillager implements Listener{
 		
 		Player player = (Player) event.getPlayer();
 		
-		if (e instanceof MarketMerchant) {
-			MarketMerchant mm = (MarketMerchant) e;
-			mm.openMainGUI(mm, player);
+		
+		if (MarketMerchant.LUT.get(e) != null) {
+			MarketMerchant mm = MarketMerchant.LUT.get(e);
+			mm.openMainGUI(player, e);
+			
 		}
 		
 	}

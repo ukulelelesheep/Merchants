@@ -9,7 +9,7 @@ public class MarketStall {
 	
 	private Location location;
 	private MarketMerchant merchant;
-	private MarketHub hub = new MarketHub(null, null);
+	private MarketHub hub;
 	private Player owner;
 	
 	public MarketStall(Location location, Player owner, MarketHub hub) {

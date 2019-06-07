@@ -3,17 +3,22 @@ package com.gmail.sharpcastle33.managers;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
+import org.bukkit.inventory.ItemStack;
 
 import com.gmail.sharpcastle33.markets.MarketHub;
+import com.gmail.sharpcastle33.markets.MarketMerchant;
 
 public class MarketHubManager {
 	//List of all the market hubs	
 	public ArrayList<MarketHub> markets = new ArrayList<MarketHub>();
 	private static HashMap<Player, MarketHub> defaultMarket = new HashMap<Player, MarketHub>();
-	
+
 	
 	//Create markets
 	public MarketHub createMarket(Player player, Block block) {
@@ -43,5 +48,31 @@ public class MarketHubManager {
 		return defaultMarket.containsKey(p);
 	}
 	
+	//Inventory of all the markets
+	public void showMarkets(MarketMerchant mm, Player player) {		
+		int numberOfColumns = (((markets.size() - (markets.size()%9)))/9)+1;
+		
+		Inventory marketHubIcons = Bukkit.createInventory((InventoryHolder) mm.getVillager(), numberOfColumns*9, "Where should I go?");
+
+		int i = 0;
+		for (MarketHub hub : markets) {
+			Material m = hub.getStallMaterial();
+			if (m != null) {
+				ItemStack icon = new ItemStack(m);
+				MarketMerchant.nameItem(icon, hub.getName());
+				marketHubIcons.setItem(i, icon);
+			} else {
+				ItemStack icon = new ItemStack(Material.JACK_O_LANTERN);
+				MarketMerchant.nameItem(icon, hub.getName());
+				marketHubIcons.setItem(i, icon);
+			}
+			
+			i++;
+
+		}
+		
+		player.openInventory(marketHubIcons);
+	
+	}
 	
 }
